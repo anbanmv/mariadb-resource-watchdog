@@ -52,3 +52,38 @@ CREATE USER 'watchdog_user'@'localhost' IDENTIFIED BY 'STRONG_PASSWORD';
 GRANT PROCESS, SHOW DATABASES ON *.* TO 'watchdog_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
+
+# How to execute:
+# Make the script executable:
+```
+chmod +x mariadb_resource_watchdog.sh
+```
+# Run with default settings:
+```
+./mariadb_resource_watchdog.sh
+```
+# Run with custom interval and log directory:
+```
+./mariadb_resource_watchdog.sh \
+  --interval 30 \
+  --log-dir /tmp/mariadb-watch
+```
+# Run in background (common during incidents)
+```
+nohup ./mariadb_resource_watchdog.sh > /dev/null 2>&1 &
+```
+
+# When not to use this tool
+This script is intentionally simple. Do not use it for:
+- High frequency profiling
+- Long-term monitoring or alerting
+- Metrics ingestion into dashboards
+- Replacing Prometheus / Grafana / exporters
+- Performance benchmarking or capacity planning
+**If you need:**
+- historical trends
+- alerting
+- per query metrics
+- cluster-wide visibility
+
+**_Use a proper monitoring stack instead._**
