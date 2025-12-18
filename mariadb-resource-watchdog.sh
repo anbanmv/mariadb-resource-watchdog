@@ -5,7 +5,7 @@
 # Periodically monitors MariaDB CPU, memory, and connection usage.
 #
 # Author  : Anban Malarvendan
-# Version : 2.0
+# Version : 1.0
 #
 # Requirements:
 #   - Linux (procfs)
